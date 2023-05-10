@@ -10,9 +10,9 @@
     "ecmaVersion": 12,
     "sourceType": "module",
     "ecmaFeatures": {
-        "modules": true
-      }
+      "modules": true
+    }
   },
   "plugins": ["react"],
-  "rules": {}
+  "rules": { "no-unused-vars": "off" }
 }

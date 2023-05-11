@@ -6,7 +6,7 @@ export const ShelfSelect = (props) => {
 
     return (
         <select id={componentId} onChange={(e) => props.updateBookState(props.bookId, e.target.value)} >
-            <option value='none' disabled>
+            <option value='none'>
                 Move to...
             </option>
             <option value='currentlyReading'>Currently Reading</option>

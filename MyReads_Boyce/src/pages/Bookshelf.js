@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { Link } from "react-router-dom";
 import { ShelfSelect } from '../components/ShelfSelect';
 import { Shelves } from '../constants/Shelves';
 
@@ -19,7 +19,7 @@ const AssignBooksToShelves = (props) => {
             }}
           ></div>
           <div className='book-shelf-changer'>
-            <ShelfSelect bookId={book.id} updateBookState={props.data.updateBookState}  />
+            <ShelfSelect bookId={book.id} updateBookState={props.data.updateBookState} />
           </div>
         </div>
         <div className='book-title'>{book.title}</div>
@@ -32,6 +32,9 @@ const AssignBooksToShelves = (props) => {
 export const Bookshelf = (data, updateBookState) => {
   return (
     <div id='wrapper'>
+      <Link to="/search" className="search-books">
+        Search Books
+      </Link>
       <div id='current'>
         <h2>Currently Reading</h2>
         <ol className='books-grid'>
@@ -68,30 +71,3 @@ export const Bookshelf = (data, updateBookState) => {
 //   data: PropTypes.array.isRequired,
 //   updateBookState: PropTypes.func.isRequired,
 // };
-
-/*    <div className='book'>
-      <div className='book-top'>
-        <div
-          className='book-cover'
-          style={{
-            width: 128,
-            height: 193,
-            backgroundImage:
-              'url("http:books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api")',
-          }}
-        ></div>
-        <div className='book-shelf-changer'>
-          <select>
-            <option value='none' disabled>
-              Move to...
-            </option>
-            <option value='currentlyReading'>Currently Reading</option>
-            <option value='wantToRead'>Want to Read</option>
-            <option value='read'>Read</option>
-            <option value='none'>None</option>
-          </select>
-        </div>
-      </div>
-      <div className='book-title'>To Kill a Mockingbird</div>
-      <div className='book-authors'>Harper Lee</div>
-    </div>*/

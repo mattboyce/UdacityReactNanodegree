@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { ShelfSelect } from '../components/ShelfSelect';
 
 export const BookSearch = ({ data, updateBookState, searchBooks }) => {

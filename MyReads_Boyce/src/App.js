@@ -20,9 +20,9 @@ function App() {
 
   const searchBooks = async (query) => {
     if (query.length > 0) {
-      console.log(query);
-      const response = await dataApi.search(query, 20);
-      console.log(response);
+      // console.log(query);
+      const response = await dataApi.search(query);
+      // console.log(response);
       setSearchResults(response);
     }
     else {

@@ -1,9 +1,16 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Link } from "react-router-dom";
 import { ShelfSelect } from '../components/ShelfSelect';
 import { Shelves } from '../constants/Shelves';
 
 const AssignBooksToShelves = (props) => {
+  console.log(props);
+
+  if (!Array.isArray(props.data.bookshelfData)) {
+    return <></>
+  }
+
   const currentShelfBooks = props.data.bookshelfData.filter((book) => book.shelf === props.desiredState);
 
   return currentShelfBooks.map((book) => (
@@ -23,7 +30,7 @@ const AssignBooksToShelves = (props) => {
           </div>
         </div>
         <div className='book-title'>{book.title}</div>
-          {book.authors.map((author) => (<div key={author} className='book-authors'>{author}</div>))}
+        {book.authors.map((author) => (<div key={author} className='book-authors'>{author}</div>))}
       </div>
     </li>
   ));

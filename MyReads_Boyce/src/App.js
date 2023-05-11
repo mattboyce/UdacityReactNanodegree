@@ -20,11 +20,13 @@ function App() {
 
   const searchBooks = async (query) => {
     if (query.length > 0) {
+      // const queryString = query.replace(' ', '%20');
       const response = await dataApi.search(query);
-      setSearchResults(response);
+      const dataArray = Array.isArray(response) ? response : [response];
+      setSearchResults(dataArray);
     }
     else {
-      setSearchResults('');
+      setSearchResults([]);
     }
   };
 

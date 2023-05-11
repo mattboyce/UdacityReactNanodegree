@@ -13,7 +13,7 @@ export const BookSearch = ({ bookshelfData, data, updateBookState, searchBooks }
 
   const AddBooksToResults = (props) => {
 
-    if (props.data[0] === undefined) {
+    if (props.data.length === 0 || props.data[0].error) {
       return (<> </>);
     }
 

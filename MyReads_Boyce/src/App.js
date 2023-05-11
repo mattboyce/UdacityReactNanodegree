@@ -9,8 +9,14 @@ function App() {
   const [bookshelfData, setBookshelfData] = useState([]);
 
   useEffect(() => {
-    dataApi.getAll().then((data) => setBookshelfData(data));
-    // console.log(dataApi.getAll().then((data) => setBookshelfData(data)));
+    const getBooks = async () => {
+      const response = await dataApi.getAll();
+      setBookshelfData(response);
+      console.log(response);
+    };
+
+    getBooks();
+
     console.log('Hello there...');
     console.log(bookshelfData);
   }, []);
@@ -29,15 +35,15 @@ function App() {
         exact
         path='/'
         element={
-          <Bookshelf data={bookshelfData} updateBookState={updateBookState} />
+          <Bookshelf bookshelfData={bookshelfData} updateBookState={updateBookState} />
         }
       />
-      <Route
+      {/* <Route
         path='/search'
         element={
           <BookSearch data={bookshelfData} updateBookState={updateBookState} />
         }
-      />
+      /> */}
     </Routes>
   );
   // return (

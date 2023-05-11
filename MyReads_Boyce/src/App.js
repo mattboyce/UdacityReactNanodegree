@@ -12,7 +12,8 @@ function App() {
   useEffect(() => {
     const getShelfBooks = async () => {
       const response = await dataApi.getAll();
-      setBookshelfData(response);
+      const dataArray = Array.isArray(response) ? response : [response];
+      setBookshelfData(dataArray);
     };
 
     getShelfBooks();
@@ -36,8 +37,8 @@ function App() {
     if (!bookshelfData.find(book => book.id === bookId)) {
       const newBook = await dataApi.get(bookId);
       setBookshelfData(
-        ...bookshelfData,
-        newBook
+        [...bookshelfData,
+        newBook]
       );
     }
     else {

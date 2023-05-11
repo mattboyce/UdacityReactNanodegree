@@ -7,22 +7,46 @@ import { BookSearch } from './pages/BookSearch';
 
 function App() {
   const [bookshelfData, setBookshelfData] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    const getBooks = async () => {
+    const getShelfBooks = async () => {
       const response = await dataApi.getAll();
       setBookshelfData(response);
     };
 
-    getBooks();
+    getShelfBooks();
   }, []);
 
-  const updateBookState = (bookId, newShelf) => {
-    setBookshelfData(
-      bookshelfData.map((book) =>
-        book.id === bookId ? { ...book, shelf: newShelf } : book
-      )
-    );
+  const searchBooks = async (query) => {
+    if (query.length > 0) {
+      console.log(query);
+      const response = await dataApi.search(query, 20);
+      console.log(response);
+      setSearchResults(response);
+    }
+    else {
+      setSearchResults('');
+    }
+  };
+
+  const updateBookState = async (bookId, newShelf) => {
+    dataApi.update(bookId, newShelf);
+
+    if (!bookshelfData.find(book => book.id === bookId)) {
+      const newBook = await dataApi.get(bookId);
+      setBookshelfData(
+        ...bookshelfData,
+        newBook
+      );
+    }
+    else {
+      setBookshelfData(
+        bookshelfData.map((book) =>
+          book.id === bookId ? { ...book, shelf: newShelf } : book
+        )
+      );
+    }
   };
 
   return (
@@ -37,7 +61,7 @@ function App() {
       <Route
         path='/search'
         element={
-          <BookSearch data={bookshelfData} updateBookState={updateBookState} />
+          <BookSearch data={searchResults} updateBookState={updateBookState} searchBooks={searchBooks} />
         }
       />
     </Routes>

@@ -23,7 +23,7 @@ const AssignBooksToShelves = (props) => {
           </div>
         </div>
         <div className='book-title'>{book.title}</div>
-        <div className='book-authors'>{book.authors[0]}</div>
+          {book.authors.map((author) => (<div key={author} className='book-authors'>{author}</div>))}
       </div>
     </li>
   ));
@@ -66,8 +66,3 @@ export const Bookshelf = (data, updateBookState) => {
     </div>
   );
 };
-
-// Bookshelf.propTypes = {
-//   data: PropTypes.array.isRequired,
-//   updateBookState: PropTypes.func.isRequired,
-// };

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { ShelfSelect } from '../components/ShelfSelect';
 import { Shelves } from '../constants/Shelves';
 
-const AssignBooksToShelves = (data) => {
-  const currentShelfBooks = data.data.bookshelfData.filter((book) => book.shelf === data.desiredState);
+const AssignBooksToShelves = (props) => {
+  const currentShelfBooks = props.data.bookshelfData.filter((book) => book.shelf === props.desiredState);
 
   return currentShelfBooks.map((book) => (
     <li key={book.id} className='bookListItem'>
@@ -19,7 +19,7 @@ const AssignBooksToShelves = (data) => {
             }}
           ></div>
           <div className='book-shelf-changer'>
-            <ShelfSelect />
+            <ShelfSelect bookId={book.id} updateBookState={props.data.updateBookState}  />
           </div>
         </div>
         <div className='book-title'>{book.title}</div>
@@ -33,17 +33,18 @@ export const Bookshelf = (data, updateBookState) => {
   return (
     <div id='wrapper'>
       <div id='current'>
-      <h2>Currently Reading</h2>
+        <h2>Currently Reading</h2>
         <ol className='books-grid'>
           <AssignBooksToShelves
             data={data}
             desiredState={Shelves.current.state}
+            updateBookState={updateBookState}
           />
         </ol>
       </div>
       <div id='want'>
-      <h2>Want to Read</h2>
-      <ol className='books-grid'>
+        <h2>Want to Read</h2>
+        <ol className='books-grid'>
           <AssignBooksToShelves
             data={data}
             desiredState={Shelves.want.state}
@@ -51,8 +52,8 @@ export const Bookshelf = (data, updateBookState) => {
         </ol>
       </div>
       <div id='read'>
-      <h2>Read</h2>
-      <ol className='books-grid'>
+        <h2>Read</h2>
+        <ol className='books-grid'>
           <AssignBooksToShelves
             data={data}
             desiredState={Shelves.read.state}
@@ -63,10 +64,10 @@ export const Bookshelf = (data, updateBookState) => {
   );
 };
 
-Bookshelf.propTypes = {
-  data: PropTypes.array.isRequired,
-  updateBookState: PropTypes.func.isRequired,
-};
+// Bookshelf.propTypes = {
+//   data: PropTypes.array.isRequired,
+//   updateBookState: PropTypes.func.isRequired,
+// };
 
 /*    <div className='book'>
       <div className='book-top'>

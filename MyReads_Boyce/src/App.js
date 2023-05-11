@@ -12,19 +12,15 @@ function App() {
     const getBooks = async () => {
       const response = await dataApi.getAll();
       setBookshelfData(response);
-      console.log(response);
     };
 
     getBooks();
-
-    console.log('Hello there...');
-    console.log(bookshelfData);
   }, []);
 
-  const updateBookState = (bookId, newState) => {
+  const updateBookState = (bookId, newShelf) => {
     setBookshelfData(
       bookshelfData.map((book) =>
-        book.id === bookId ? { ...book, state: newState } : book
+        book.id === bookId ? { ...book, shelf: newShelf } : book
       )
     );
   };

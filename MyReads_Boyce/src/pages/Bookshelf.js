@@ -5,14 +5,11 @@ import { ShelfSelect } from '../components/ShelfSelect';
 import { Shelves } from '../constants/Shelves';
 
 const AssignBooksToShelves = (props) => {
-  console.log(props);
-
   if (!Array.isArray(props.data.bookshelfData)) {
     return <></>
   }
 
   const currentShelfBooks = props.data.bookshelfData.filter((book) => book.shelf === props.desiredState);
-
   return currentShelfBooks.map((book) => (
     <li key={book.id} className='bookListItem'>
       <div className='book'>
@@ -26,7 +23,7 @@ const AssignBooksToShelves = (props) => {
             }}
           ></div>
           <div className='book-shelf-changer'>
-            <ShelfSelect bookId={book.id} updateBookState={props.data.updateBookState} />
+            <ShelfSelect bookId={book.id} bookshelfData={props.data.bookshelfData} updateBookState={props.data.updateBookState} />
           </div>
         </div>
         <div className='book-title'>{book.title}</div>

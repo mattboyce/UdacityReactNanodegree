@@ -20,9 +20,7 @@ function App() {
 
   const searchBooks = async (query) => {
     if (query.length > 0) {
-      // console.log(query);
       const response = await dataApi.search(query);
-      // console.log(response);
       setSearchResults(response);
     }
     else {
@@ -31,17 +29,9 @@ function App() {
   };
 
   const updateBookState = async (bookId, newShelf) => {
-    // console.log('updateBookState');
-    // console.log(bookId);
-    // console.log(newShelf);
-    // console.log(bookshelfData);
-    // console.log((bookshelfData.find(book => book.id === bookId)));
-
     dataApi.update(bookId, newShelf);
 
     if (!bookshelfData.find(book => book.id === bookId)) {
-      // dataApi.update(bookId, newShelf);
-
       const newBook = await dataApi.get(bookId);
       setBookshelfData(
         ...bookshelfData,
@@ -69,7 +59,7 @@ function App() {
       <Route
         path='/search'
         element={
-          <BookSearch data={searchResults} updateBookState={updateBookState} searchBooks={searchBooks} />
+          <BookSearch bookshelfData={bookshelfData} data={searchResults} updateBookState={updateBookState} searchBooks={searchBooks} />
         }
       />
     </Routes>

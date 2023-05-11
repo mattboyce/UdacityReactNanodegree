@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { ShelfSelect } from '../components/ShelfSelect';
 
-export const BookSearch = ({ data, updateBookState, searchBooks }) => {
+export const BookSearch = ({ bookshelfData, data, updateBookState, searchBooks }) => {
   const [query, setQuery] = useState('');
 
   const updateQuery = (query) => {
@@ -30,7 +30,7 @@ export const BookSearch = ({ data, updateBookState, searchBooks }) => {
               }}
             ></div>
             <div className='book-shelf-changer'>
-              <ShelfSelect bookId={book.id} updateBookState={props.updateBookState} />
+              <ShelfSelect bookId={book.id} bookshelfData={bookshelfData} updateBookState={props.updateBookState} />
             </div>
           </div>
           <div className='book-title'>{book.title !== undefined ? book.title : ''}</div>
@@ -68,6 +68,7 @@ export const BookSearch = ({ data, updateBookState, searchBooks }) => {
 };
 
 BookSearch.propTypes = {
+  bookshelfData: PropTypes.array.isRequired,
   data: PropTypes.array.isRequired,
   updateBookState: PropTypes.func.isRequired,
   searchBooks: PropTypes.func.isRequired,

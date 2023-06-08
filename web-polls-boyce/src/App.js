@@ -1,25 +1,48 @@
-import logo from './logo.svg';
+/* eslint-disable react/prop-types */
+import React, { Fragment, useEffect } from 'react';
+import { connect } from "react-redux";
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import { Login } from './pages/login';
+import { Home } from './pages/home';
+import { handleInitialData } from './actions/shared';
 
-function App() {
+import NavBar from './components/NavBar';
+
+const App = (props) => {
+  console.log('lol');
+  useEffect(() => {
+    props.dispatch(handleInitialData());
+    console.log('JAJAJAJAJAJAJA');
+    console.log(props);
+  }, []);
+
+  const { authUser } = this.props;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      {authUser === null ? (
+        <Route
+          render={() => (
+            <Login />
+          )}
+        />
+      ) : (
+        <Fragment>
+          <NavBar />
+          <Routes>
+            <Route path="/" exact element={<Home />} />
+            {/* <Route path="/tweet/:id" element={<TweetPage />} />
+            <Route path="/new" element={<NewTweet />} /> */}
+          </Routes>
+        </Fragment>)}
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = ({ authedUser }) => ({
+  authedUser: authedUser,
+});
+
+export default connect(mapStateToProps)(App);
+// export default App;

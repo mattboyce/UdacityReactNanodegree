@@ -48,10 +48,12 @@ const Home = (props) => {
                 <button onClick={() => changeTab('answered')}>Answered Questions</button>
             </div>
             <div id="unanswered" className="tabcontent">
+                <h2 style={{ textAlign: 'center' }}>Unanswered Questions</h2>
                 {questionsArr.map((question) => (hasAuthedUserVoted(question, authedUser) ? (<div key={question.id} />) : (<PreviewQuestion key={question.id} question={question} />)))}
             </div>
 
             <div id="answered" className="tabcontent" style={{ display: 'none' }}>
+                <h2 style={{ textAlign: 'center' }}>Answered Questions</h2>
                 {questionsArr.map((question) => (hasAuthedUserVoted(question, authedUser) ? (<PreviewQuestion key={question.id} question={question} />) : (<div key={question.id} />)))}
             </div>
         </div >

@@ -17,7 +17,7 @@ const LeaderboardCard = (props) => {
     return (
         <div>
             {leaderboardData.map((user) => (
-                <Grid key={user.id}>
+                <Grid key={user.id} style={{ textAlign: 'center' }}>
                     <Grid.Row>
                         <Image src={user.avatarURL} />
                         <Header as="h3" textAlign="left">
@@ -57,8 +57,8 @@ function mapStateToProps({ users }) {
             total: Object.values(user.answers).length + user.questions.length
         }))
         .sort((a, b) => a.total - b.total)
-        .reverse()
-        .slice(0, 3);
+        .reverse();
+    // .slice(0, 3);
     return {
         leaderboardData
     };

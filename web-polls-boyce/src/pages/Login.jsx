@@ -4,8 +4,6 @@ import React from 'react';
 import { connect } from "react-redux";
 import { setAuthedUser } from '../actions/authedUser';
 
-// const { users } = this.props;
-
 
 const handleUserChange = (e) => {
     console.log(e);
@@ -34,20 +32,9 @@ const Login = (props) => {
             <h3>Select a User</h3>
             <UserSelect
                 props={props} />
-            {/* <select name="Users" id="usersDropDown" onChange={handleUserChange}>
-                <option value=""></option>
-
-                {props.users.map((user) => (<option key={user.id} value={user.id}>{user.name}</option>))}
-            </select> */}
         </div >
     );
 };
-
-// const mapStateToProps = ({ users }) => {
-//     console.log('REEEEEEEEEEEEEEEEEEEEEEEEEEEE');
-//     console.log(users);
-//     // return { users };
-// };
 
 const mapStateToProps = ({ users }) => ({
     users: users,

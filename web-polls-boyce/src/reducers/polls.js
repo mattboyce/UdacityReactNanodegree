@@ -9,7 +9,7 @@ export default function polls(state = {}, action) {
                 ...action.polls
             };
         case SAVE_POLL_ANSWER:
-            const { authUser, qid, answer } = action;
+            const { authedUser, qid, answer } = action;
 
             return {
                 ...state,
@@ -17,7 +17,7 @@ export default function polls(state = {}, action) {
                     ...state[qid],
                     [answer]: {
                         ...state[qid][answer],
-                        votes: state[qid][answer].votes.concat(authUser)
+                        votes: state[qid][answer].votes.concat(authedUser)
                     }
                 }
             };

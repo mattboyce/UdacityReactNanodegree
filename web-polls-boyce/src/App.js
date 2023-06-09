@@ -14,13 +14,13 @@ const App = (props) => {
     props.dispatch(handleInitialData());
   }, []);
 
-  const { authUser } = props;
+  const { authedUser } = props;
 
   return (
     <div className="container">
       {/* {console.log('what is happening???')}
-      {console.log(authUser)} */}
-      {authUser === undefined || authUser === null ? (
+      {console.log(authedUser)} */}
+      {authedUser === undefined || authedUser === null ? (
         <Login
         props />
       ) : (

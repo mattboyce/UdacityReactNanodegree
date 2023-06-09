@@ -9,7 +9,8 @@ export function handleUserChange(e) {
     console.log(e);
     console.log(e.target.value);
     return (dispatch) => {
-        dispatch(setAuthedUser(e.target.value));
+        dispatch(setAuthedUser("e.target.value"));
+        dispatch(setAuthedUser("Matt"));
     };
 }
 // export function handleUserChange(e) {

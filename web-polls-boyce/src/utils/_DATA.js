@@ -138,13 +138,13 @@ export function _getUsers () {
   })
 }
 
-export function _getPolls () {
+export function _getQuestions () {
   return new Promise((resolve) => {
     setTimeout(() => resolve({...questions}), 1000)
   })
 }
 
-function formatPoll ({ optionOneText, optionTwoText, author }) {
+function formatQuestion ({ optionOneText, optionTwoText, author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
@@ -160,25 +160,25 @@ function formatPoll ({ optionOneText, optionTwoText, author }) {
   }
 }
 
-export function _savePoll (question) {
+export function _saveQuestion (question) {
   return new Promise((resolve, reject) => {
     if (!question.optionOneText || !question.optionTwoText || !question.author) {
       reject("Please provide optionOneText, optionTwoText, and author");
     }
 
-    const formattedPoll = formatPoll(question)
+    const formattedQuestion = formatQuestion(question)
     setTimeout(() => {
       questions = {
         ...questions,
-        [formattedPoll.id]: formattedPoll
+        [formattedQuestion.id]: formattedQuestion
       }
 
-      resolve(formattedPoll)
+      resolve(formattedQuestion)
     }, 1000)
   })
 }
 
-export function _savePollAnswer ({ authedUser, qid, answer }) {
+export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
   return new Promise((resolve, reject) => {
     if (!authedUser || !qid || !answer) {
       reject("Please provide authedUser, qid, and answer");

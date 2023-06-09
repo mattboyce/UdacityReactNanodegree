@@ -4,9 +4,11 @@ import { connect } from "react-redux";
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './pages/Login';
-import { Home } from './pages/Home';
+import Home from './pages/Home';
 import { handleInitialData } from './actions/shared';
 import NavBar from './components/NavBar';
+import { CreateQuestion } from './pages/CreateQuestion';
+import { Leaderboard } from './pages/Leaderboard';
 
 const App = (props) => {
 
@@ -18,8 +20,6 @@ const App = (props) => {
 
   return (
     <div className="container">
-      {/* {console.log('what is happening???')}
-      {console.log(authedUser)} */}
       {authedUser === undefined || authedUser === null ? (
         <Login
         props />
@@ -28,8 +28,8 @@ const App = (props) => {
           <NavBar />
           <Routes>
             <Route path="/" exact element={<Home />} />
-            {/* <Route path="/tweet/:id" element={<TweetPage />} />
-            <Route path="/new" element={<NewTweet />} /> */}
+            <Route path="/leaderboard" exact element={<Leaderboard />} />
+            <Route path="/create-question" exact element={<CreateQuestion />} />
           </Routes>
         </Fragment>)}
     </div>

@@ -1,14 +1,15 @@
 /* eslint-disable no-case-declarations */
-import { GET_POLLS, SAVE_POLL_ANSWER, ADD_POLL } from "../actions/polls";
+import { GET_QUESTIONS, SAVE_QUESTION_ANSWER, ADD_QUESTION } from "../actions/questions";
 
-export default function polls(state = {}, action) {
+export default function questions(state = {}, action) {
     switch (action.type) {
-        case GET_POLLS:
+        
+        case GET_QUESTIONS:
             return {
                 ...state,
-                ...action.polls
+                ...action.questions
             };
-        case SAVE_POLL_ANSWER:
+        case SAVE_QUESTION_ANSWER:
             const { authedUser, qid, answer } = action;
 
             return {
@@ -21,12 +22,12 @@ export default function polls(state = {}, action) {
                     }
                 }
             };
-        case ADD_POLL:
-            const { poll } = action;
+        case ADD_QUESTION:
+            const { question } = action;
 
             return {
                 ...state,
-                [poll.id]: poll
+                [question.id]: question
             };
         default:
             return state;

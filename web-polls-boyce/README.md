@@ -1,4 +1,4 @@
-# Employee Polls Project
+# Employee Questions Project
 
 This is the starter code for the final assessment project for Udacity's React & Redux course.
 
@@ -11,7 +11,7 @@ Using the provided starter code, you'll build a React/Redux front end for the ap
 There are two types of objects stored in our database:
 
 * Users
-* Polls
+* Questions
 
 ### Users
 
@@ -23,12 +23,12 @@ Users include:
 | password   | String           | The user’s password in order to log in the application |
 | name          | String           | The user’s first name  and last name     |
 | avatarURL  | String           | The path to the image file |
-| questions | Array | A list of ids of the polling questions this user created|
+| questions | Array | A list of ids of the questioning questions this user created|
 | answers      | Object         |  The object's keys are the ids of each question this user answered. The value of each key is the answer the user selected. It can be either `'optionOne'` or `'optionTwo'` since each question has two options.
 
-### Polls
+### Questions
 
-Polls include:
+Questions include:
 
 | Attribute | Type | Description |
 |-----------------|------------------|-------------------|
@@ -50,23 +50,23 @@ Voting options are attached to questions. They include:
 Your code will talk to the database via 4 methods:
 
 * `_getUsers()`
-* `_getPolls()`
-* `_savePoll(question)`
-* `_savePollAnswer(object)`
+* `_getQuestions()`
+* `_saveQuestion(question)`
+* `_saveQuestionAnswer(object)`
 
 1) `_getUsers()` Method
 
 *Description*: Get all of the existing users from the database.  
 *Return Value*: Object where the key is the user’s id and the value is the user object.
 
-2) `_getPolls()` Method
+2) `_getQuestions()` Method
 
 *Description*: Get all of the existing questions from the database.  
 *Return Value*: Object where the key is the question’s id and the value is the question object.
 
-3) `_savePoll(question)` Method
+3) `_saveQuestion(question)` Method
 
-*Description*: Save the polling question in the database. If one of the parameters are missing, an error is thrown.
+*Description*: Save the questioning question in the database. If one of the parameters are missing, an error is thrown.
 *Parameters*:  Object that includes the following properties: `author`, `optionOneText`, and `optionTwoText`. More details about these properties:
 
 | Attribute | Type | Description |
@@ -85,9 +85,9 @@ Your code will talk to the database via 4 methods:
 | optionTwo | Object | The object has a text property and a votes property, which stores an array of the ids of the users who voted for that option|
 |timestamp|String | The time when the question was created|
 
-4) `_savePollAnswer(object)` Method
+4) `_saveQuestionAnswer(object)` Method
 
-*Description*: Save the answer to a particular polling question in the database. If one of the parameters are missing, an error is thrown.
+*Description*: Save the answer to a particular questioning question in the database. If one of the parameters are missing, an error is thrown.
 *Parameters*: Object that contains the following properties: `authedUser`, `qid`, and `answer`. More details about these properties:
 
 | Attribute | Type | Description |

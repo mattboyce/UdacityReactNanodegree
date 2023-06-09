@@ -1,14 +1,13 @@
-
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import PreviewQuestion from '../components/PreviewQuestion';
 
 const changeTab = (tabName) => {
-
-    console.log('WAT');
 
     const tabContent = document.getElementsByClassName("tabcontent");
 
     for (let i = 0; i < tabContent.length; i++) {
-        console.log(tabContent[i].id);
         if (tabName === tabContent[i].id) {
             tabContent[i].style.display = "block";
         }
@@ -18,21 +17,55 @@ const changeTab = (tabName) => {
     }
 }
 
-export const Home = () => {
+const hasAuthedUserVoted = (question, authedUser) => {
+    if (question.optionOne.votes.includes(authedUser)) {
+        return true;
+    }
+    if (question.optionTwo.votes.includes(authedUser)) {
+        return true;
+    }
+    return false;
+}
+
+const Home = (props) => {
+
+    const { questions, authedUser } = props;
+    const questionsArr = Object.values(questions);
+
+    if (props.questions === undefined || props.questions === null) {
+        return (<div id='wrapper' style={{ textAlign: 'center' }}>
+            <div className="tab">
+                <button onClick={() => changeTab('unanswered')}>Unanswered Questions</button>
+                <button onClick={() => changeTab('answered')}>Answered Questions</button>
+            </div>
+        </div >);
+    }
+
     return (
         <div id='wrapper'>
-            <div className="tab">
-                <button onClick={() => changeTab('unanswered')}>Unanswered Polls</button>
-                <button onClick={() => changeTab('answered')}>Answered Polls</button>
+            <div className="tab" style={{ textAlign: 'center' }}>
+                <button onClick={() => changeTab('unanswered')}>Unanswered Questions</button>
+                <button onClick={() => changeTab('answered')}>Answered Questions</button>
             </div>
-
             <div id="unanswered" className="tabcontent">
-                <h3>Unanswered</h3>
+                {questionsArr.map((question) => (hasAuthedUserVoted(question, authedUser) ? (<div key={question.id} />) : (<PreviewQuestion key={question.id} question={question} />)))}
             </div>
 
             <div id="answered" className="tabcontent" style={{ display: 'none' }}>
-                <h3>Answered</h3>
+                {questionsArr.map((question) => (hasAuthedUserVoted(question, authedUser) ? (<PreviewQuestion key={question.id} question={question} />) : (<div key={question.id} />)))}
             </div>
         </div >
     );
 };
+
+const mapStateToProps = ({ authedUser, questions }) => ({
+    authedUser: authedUser,
+    questions: questions,
+});
+
+Home.propTypes = {
+    authedUser: PropTypes.string.isRequired,
+    questions: PropTypes.object.isRequired,
+};
+
+export default connect(mapStateToProps)(Home);

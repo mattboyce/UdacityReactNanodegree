@@ -12,7 +12,7 @@ const NavBar = () => {
           <Link to="/leaderboard">Leaderboard</Link>
         </li>
         <li>
-          <Link to="/new-poll">New Poll</Link>
+          <Link to="/create-question">Create Question</Link>
         </li>
       </ul>
     </nav>

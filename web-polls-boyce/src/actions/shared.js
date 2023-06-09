@@ -1,17 +1,17 @@
 import { getInitialData } from "../utils/api";
 import { getUsers } from "./users";
-import { getPolls } from "./polls";
+import { getQuestions } from "./questions";
 import { setAuthedUser } from './authedUser';
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 export function handleInitialData() {
   return (dispatch) => {
     dispatch(showLoading());
-    return getInitialData().then(({ users, polls }) => {
+    return getInitialData().then(({ users, questions }) => {
       dispatch(getUsers(users));
-      dispatch(getPolls(polls));
+      dispatch(getQuestions(questions));
       // TEMP TAKE OUT FOLLOWING LINE LATER 
-      dispatch(setAuthedUser("Matt"));
+      dispatch(setAuthedUser("mtsamis"));
       dispatch(hideLoading());
     });
   };

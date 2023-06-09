@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import PropTypes from 'prop-types';
+import AnsweredQuestion from '../components/AnsweredQuestion';
 // import { Header, Button } from 'semantic-ui-react';
 
 const withRouter = (Component) => {
@@ -17,9 +18,6 @@ const withRouter = (Component) => {
 
 const ViewQuestion = (props) => {
 
-    console.log('555555555');
-    console.log(props);
-
     if (props.question === undefined) {
         return (<></>);
     }
@@ -29,7 +27,7 @@ const ViewQuestion = (props) => {
     if (userAnsweredAlready) {
         return (
             <div>
-                see other answers
+                <AnsweredQuestion />
             </div>
         );
     }
@@ -52,7 +50,6 @@ const mapStateToProps = ({ questions, authedUser }, props) => {
 }
 
 ViewQuestion.propTypes = {
-    questionId: PropTypes.string.isRequired,
     question: PropTypes.object.isRequired,
     authedUser: PropTypes.string.isRequired,
 };

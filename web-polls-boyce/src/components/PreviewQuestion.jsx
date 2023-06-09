@@ -22,7 +22,7 @@ const PreviewQuestion = (question) => {
             <p style={{ textAlign: 'center' }}>
                 {question.question.optionOne.text}
                 <br />
-                or...
+                OR
                 <br />
                 {question.question.optionTwo.text}
             </p>

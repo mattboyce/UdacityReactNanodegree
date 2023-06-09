@@ -1,5 +1,4 @@
 import React from 'react';
-// import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Header, Button } from 'semantic-ui-react';
@@ -29,8 +28,6 @@ const PreviewQuestion = (question) => {
             </p>
             <div style={{ textAlign: 'center' }}>
                 <Button
-                    size="tiny"
-                    fluid
                     onClick={handleClick}
                     content="View Question"
                 />

@@ -9,6 +9,7 @@ import { handleInitialData } from './actions/shared';
 import NavBar from './components/NavBar';
 import { CreateQuestion } from './pages/CreateQuestion';
 import { Leaderboard } from './pages/Leaderboard';
+import ViewQuestion from './pages/ViewQuestion';
 
 const App = (props) => {
 
@@ -30,6 +31,7 @@ const App = (props) => {
             <Route path="/" exact element={<Home />} />
             <Route path="/leaderboard" exact element={<Leaderboard />} />
             <Route path="/create-question" exact element={<CreateQuestion />} />
+            <Route path="/questions/:id" exact element={<ViewQuestion />} />
           </Routes>
         </Fragment>)}
     </div>

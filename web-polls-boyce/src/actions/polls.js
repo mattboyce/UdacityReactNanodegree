@@ -1,4 +1,4 @@
-import { saveQuestion, saveQuestionAnswer } from "../utils/api";
+import * as api from "../utils/api";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 export const GET_POLLS = "GET_POLLS";
@@ -31,7 +31,7 @@ export function handleAddPoll(question) {
 
         dispatch(showLoading());
 
-        return saveQuestion({
+        return api.savePoll({
             question,
         })
             .then((question) => dispatch(addPoll(question)))
@@ -45,7 +45,7 @@ export function handleAnswerPoll(qid, answer) {
 
         dispatch(showLoading());
 
-        return saveQuestionAnswer({
+        return api.savePollAnswer({
             authedUser, qid, answer,
         })
             .then((authedUser, qid, answer,) => dispatch(savePollAnswer(authedUser, qid, answer,)))

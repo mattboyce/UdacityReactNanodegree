@@ -3,30 +3,26 @@ import React, { Fragment, useEffect } from 'react';
 import { connect } from "react-redux";
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Login } from './pages/login';
-import { Home } from './pages/home';
+import Login from './pages/Login';
+import { Home } from './pages/Home';
 import { handleInitialData } from './actions/shared';
-
 import NavBar from './components/NavBar';
 
 const App = (props) => {
-  console.log('lol');
+
   useEffect(() => {
     props.dispatch(handleInitialData());
-    console.log('JAJAJAJAJAJAJA');
-    console.log(props);
   }, []);
 
-  const { authUser } = this.props;
+  const { authUser } = props;
 
   return (
     <div className="container">
-      {authUser === null ? (
-        <Route
-          render={() => (
-            <Login />
-          )}
-        />
+      {/* {console.log('what is happening???')}
+      {console.log(authUser)} */}
+      {authUser === undefined || authUser === null ? (
+        <Login
+        props />
       ) : (
         <Fragment>
           <NavBar />

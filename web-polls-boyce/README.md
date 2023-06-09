@@ -11,7 +11,7 @@ Using the provided starter code, you'll build a React/Redux front end for the ap
 There are two types of objects stored in our database:
 
 * Users
-* Questions
+* Polls
 
 ### Users
 
@@ -26,9 +26,9 @@ Users include:
 | questions | Array | A list of ids of the polling questions this user created|
 | answers      | Object         |  The object's keys are the ids of each question this user answered. The value of each key is the answer the user selected. It can be either `'optionOne'` or `'optionTwo'` since each question has two options.
 
-### Questions
+### Polls
 
-Questions include:
+Polls include:
 
 | Attribute | Type | Description |
 |-----------------|------------------|-------------------|
@@ -50,21 +50,21 @@ Voting options are attached to questions. They include:
 Your code will talk to the database via 4 methods:
 
 * `_getUsers()`
-* `_getQuestions()`
-* `_saveQuestion(question)`
-* `_saveQuestionAnswer(object)`
+* `_getPolls()`
+* `_savePoll(question)`
+* `_savePollAnswer(object)`
 
 1) `_getUsers()` Method
 
 *Description*: Get all of the existing users from the database.  
 *Return Value*: Object where the key is the user’s id and the value is the user object.
 
-2) `_getQuestions()` Method
+2) `_getPolls()` Method
 
 *Description*: Get all of the existing questions from the database.  
 *Return Value*: Object where the key is the question’s id and the value is the question object.
 
-3) `_saveQuestion(question)` Method
+3) `_savePoll(question)` Method
 
 *Description*: Save the polling question in the database. If one of the parameters are missing, an error is thrown.
 *Parameters*:  Object that includes the following properties: `author`, `optionOneText`, and `optionTwoText`. More details about these properties:
@@ -85,7 +85,7 @@ Your code will talk to the database via 4 methods:
 | optionTwo | Object | The object has a text property and a votes property, which stores an array of the ids of the users who voted for that option|
 |timestamp|String | The time when the question was created|
 
-4) `_saveQuestionAnswer(object)` Method
+4) `_savePollAnswer(object)` Method
 
 *Description*: Save the answer to a particular polling question in the database. If one of the parameters are missing, an error is thrown.
 *Parameters*: Object that contains the following properties: `authedUser`, `qid`, and `answer`. More details about these properties:

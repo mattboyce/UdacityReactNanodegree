@@ -1,24 +1,24 @@
 import {
     _getUsers,
-    _getQuestions,
-    _saveQuestion,
-    _saveQuestionAnswer,
+    _getPolls,
+    _savePoll,
+    _savePollAnswer,
   } from './_DATA.js'
   
   export function getInitialData () {
     return Promise.all([
       _getUsers(),
-      _getQuestions(),
+      _getPolls(),
     ]).then(([users, polls]) => ({
       users,
       polls,
     }))
   }
   
-  export function saveQuestion (question) {
-    return _saveQuestion(question)
+  export function savePoll (question) {
+    return _savePoll(question)
   }
   
-  export function saveQuestionAnswer (authedUser, qid, answer) {
-    return _saveQuestionAnswer(authedUser, qid, answer)
+  export function savePollAnswer (authedUser, qid, answer) {
+    return _savePollAnswer(authedUser, qid, answer)
   }

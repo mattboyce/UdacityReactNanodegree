@@ -7,7 +7,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import { handleInitialData } from './actions/shared';
 import NavBar from './components/NavBar';
-import { CreateQuestion } from './pages/CreateQuestion';
+import CreateQuestion from './pages/CreateQuestion';
 import { Leaderboard } from './pages/Leaderboard';
 import ViewQuestion from './pages/ViewQuestion';
 

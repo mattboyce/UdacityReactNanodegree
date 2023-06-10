@@ -16,7 +16,7 @@ import {
   }
   
   export function saveQuestion (question) {
-    return _saveQuestion(question)
+    return _saveQuestion(question.question)
   }
   
   export function saveQuestionAnswer (authedUser, qid, answer) {

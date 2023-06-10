@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 import { setAuthedUser } from '../actions/authedUser';
+import { Username } from './Username';
 
 const NavBar = (props) => {
 
@@ -27,7 +28,7 @@ const NavBar = (props) => {
         </ul>
       </nav>
 
-      <p>{props.userName}</p>
+      <Username userName={props.userName} />
       <Button
         onClick={handleLogoutClicked}
         content="Logout"

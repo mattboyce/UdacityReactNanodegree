@@ -10,16 +10,13 @@ const UserSelect = (props) => {
     }
 
     const handleUserChange = (e) => {
-        console.log(e);
-        console.log(e.target.value);
-        console.log(props);
         props.props.dispatch(setAuthedUser(e.target.value));
     }
 
     const usersArr = Object.values(props.props.users);
 
     return (
-        <select name="Users" id="usersDropDown" onChange={handleUserChange}>
+        <select data-testid="testUserSelect" name="Users" id="usersDropDown" onChange={handleUserChange}>
             <option value=""></option>
             {usersArr.map((user) => (<option key={user.id} value={user.id}>{user.name}</option>))}
         </select>
@@ -31,7 +28,8 @@ const Login = (props) => {
         <div id='wrapper'>
             <h3>Select a User</h3>
             <UserSelect
-                props={props} />
+                props={props}
+            />
         </div >
     );
 };

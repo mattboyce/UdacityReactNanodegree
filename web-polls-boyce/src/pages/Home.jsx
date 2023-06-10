@@ -35,8 +35,8 @@ const Home = (props) => {
     if (props.questions === undefined || props.questions === null) {
         return (<div id='wrapper' style={{ textAlign: 'center' }}>
             <div className="tab">
-                <button onClick={() => changeTab('unanswered')}>Unanswered Questions</button>
-                <button onClick={() => changeTab('answered')}>Answered Questions</button>
+                <button id="unansweredButton" onClick={() => changeTab('unanswered')}>Unanswered Questions</button>
+                <button id="answeredButton" onClick={() => changeTab('answered')}>Answered Questions</button>
             </div>
         </div >);
     }

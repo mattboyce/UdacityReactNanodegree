@@ -29,6 +29,8 @@ const hasAuthedUserVoted = (question, authedUser) => {
 
 const Home = (props) => {
 
+    console.log('HOME HOME HOME HOME HOME HOME HOME HOME HOME HOME ');
+    console.log(props);
     const { questions, authedUser } = props;
     const questionsArr = Object.values(questions);
 

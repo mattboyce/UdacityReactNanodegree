@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import { handleInitialData } from './actions/shared';
 import NavBar from './components/NavBar';
 import CreateQuestion from './pages/CreateQuestion';
-import { Leaderboard } from './pages/Leaderboard';
+import Leaderboard from './pages/Leaderboard';
 import ViewQuestion from './pages/ViewQuestion';
 
 const App = (props) => {
@@ -23,7 +23,7 @@ const App = (props) => {
     <div className="container">
       {authedUser === undefined || authedUser === null ? (
         <Login
-        props />
+          props />
       ) : (
         <Fragment>
           <NavBar />

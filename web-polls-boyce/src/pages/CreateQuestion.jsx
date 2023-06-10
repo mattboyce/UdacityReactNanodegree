@@ -24,6 +24,9 @@ const CreateQuestion = (props) => {
     };
 
     const handleSubmit = () => {
+        if (optionOne === '' || optionTwo === '') {
+            return;
+        }
         const newQuestion = {
             author: props.authedUser,
             optionOneText: optionOne,

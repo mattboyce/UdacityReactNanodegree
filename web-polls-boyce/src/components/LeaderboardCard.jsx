@@ -12,6 +12,8 @@ import {
 
 const LeaderboardCard = (props) => {
 
+    console.log(props);
+
     const { leaderboardData } = props;
 
     return (
@@ -47,6 +49,9 @@ const LeaderboardCard = (props) => {
 };
 
 function mapStateToProps({ users }) {
+
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+    console.log(users);
     const leaderboardData = Object.values(users)
         .map(user => ({
             id: user.id,
@@ -58,7 +63,7 @@ function mapStateToProps({ users }) {
         }))
         .sort((a, b) => a.total - b.total)
         .reverse();
-        // .slice(0, 3);
+    // .slice(0, 3);
     return {
         leaderboardData
     };

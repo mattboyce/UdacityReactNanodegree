@@ -33,7 +33,7 @@ const AnsweredQuestion = (props) => {
             <p style={{ textAlign: 'center' }}>
                 {props.question.optionOne.text} - Votes: {optionOneVoteCount} ({((optionOneVoteCount / totalVotes) * 100).toFixed(2)}%)
                 <br />
-                or...
+                OR
                 <br />
                 {props.question.optionTwo.text} - Votes: {optionTwoVoteCount} ({((optionTwoVoteCount / totalVotes) * 100).toFixed(2)}%)
             </p>

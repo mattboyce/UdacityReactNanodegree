@@ -48,7 +48,7 @@ export function handleAnswerQuestion(qid, answer) {
         return api.saveQuestionAnswer({
             authedUser, qid, answer,
         })
-            .then((authedUser, qid, answer,) => dispatch(saveQuestionAnswer(authedUser, qid, answer,)))
+            .then(() => dispatch(saveQuestionAnswer({ authedUser, qid, answer, })))
             .then(() => dispatch(hideLoading()));
     };
 }

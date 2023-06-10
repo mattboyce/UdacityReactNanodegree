@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import PropTypes from 'prop-types';
 import AnsweredQuestion from '../components/AnsweredQuestion';
+import UnansweredQuestion from '../components/UnansweredQuestion';
 // import { Header, Button } from 'semantic-ui-react';
 
 const withRouter = (Component) => {
@@ -34,7 +35,7 @@ const ViewQuestion = (props) => {
 
     return (
         <div>
-            vote here
+            <UnansweredQuestion />
         </div>
     );
 };

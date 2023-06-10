@@ -43,4 +43,3 @@ const mapStateToProps = ({ authedUser }) => ({
 });
 
 export default connect(mapStateToProps)(App);
-// export default App;

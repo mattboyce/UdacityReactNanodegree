@@ -1,25 +1,19 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 import { setAuthedUser } from '../actions/authedUser';
-
-
-
-export function handleUserChange(e) {
-    console.log(e);
-    console.log(e.target.value);
-    return (dispatch) => {
-        dispatch(setAuthedUser("e.target.value"));
-        dispatch(setAuthedUser("Matt"));
-    };
-}
-// export function handleUserChange(e) {
-//     return setAuthedUser(e.target.value);
-// }
 
 const UserSelect = (props) => {
     if (props.props.users === undefined || props.props.users === null || props.props.users === {}) {
         return <></>
+    }
+
+    const handleUserChange = (e) => {
+        console.log(e);
+        console.log(e.target.value);
+        console.log(props);
+        props.props.dispatch(setAuthedUser(e.target.value));
     }
 
     const usersArr = Object.values(props.props.users);
@@ -42,11 +36,15 @@ const Login = (props) => {
     );
 };
 
-const mapStateToProps = ({ users, authedUser }) => ({
-    users: users,
-    authedUser: authedUser,
-});
+function mapStateToProps({ users }) {
+    return {
+        users,
+    };
+}
 
-export default connect(mapStateToProps, { setAuthedUser })(Login);
+Login.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    users: PropTypes.object.isRequired,
+};
 
-// export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Login);

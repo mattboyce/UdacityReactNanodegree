@@ -12,8 +12,6 @@ import {
 
 const LeaderboardCard = (props) => {
 
-    console.log(props);
-
     const { leaderboardData } = props;
 
     return (
@@ -49,9 +47,6 @@ const LeaderboardCard = (props) => {
 };
 
 function mapStateToProps({ users }) {
-
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-    console.log(users);
     const leaderboardData = Object.values(users)
         .map(user => ({
             id: user.id,

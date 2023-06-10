@@ -29,10 +29,14 @@ const hasAuthedUserVoted = (question, authedUser) => {
 
 const Home = (props) => {
 
-    console.log('HOME HOME HOME HOME HOME HOME HOME HOME HOME HOME ');
-    console.log(props);
     const { questions, authedUser } = props;
     const questionsArr = Object.values(questions);
+
+    questionsArr.sort(function (x, y) {
+        return y.timestamp - x.timestamp;
+    })
+
+    // sort by newest
 
     if (props.questions === undefined || props.questions === null) {
         return (<div id='wrapper' style={{ textAlign: 'center' }}>

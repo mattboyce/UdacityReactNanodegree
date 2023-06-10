@@ -14,6 +14,13 @@ const PreviewQuestion = (question) => {
         return (<></>);
     }
 
+    const GetReadableDateFromTimestamp = (timestamp) => {
+        let newDate = new Date();
+        newDate.setTime(timestamp);
+
+        return newDate.toUTCString();
+    }
+
     return (
         <div>
             <Header as="h4" style={{ textAlign: 'center' }}>
@@ -26,6 +33,7 @@ const PreviewQuestion = (question) => {
                 <br />
                 {question.question.optionTwo.text}
             </p>
+            <h5 style={{ textAlign: 'center' }}>Posted on: {GetReadableDateFromTimestamp(question.question.timestamp)}</h5>
             <div style={{ textAlign: 'center' }}>
                 <Button
                     onClick={handleClick}

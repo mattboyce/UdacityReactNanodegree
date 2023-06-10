@@ -30,7 +30,7 @@ const App = (props) => {
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/leaderboard" exact element={<Leaderboard />} />
-            <Route path="/create-question" exact element={<CreateQuestion />} />
+            <Route path="/add" exact element={<CreateQuestion />} />
             <Route path="/questions/:id" exact element={<ViewQuestion />} />
           </Routes>
         </Fragment>)}

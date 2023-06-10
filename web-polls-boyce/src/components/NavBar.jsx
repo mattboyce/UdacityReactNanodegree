@@ -23,7 +23,7 @@ const NavBar = (props) => {
             <Link to="/leaderboard">Leaderboard</Link>
           </li>
           <li>
-            <Link to="/create-question">Create Question</Link>
+            <Link to="/add">Create Question</Link>
           </li>
         </ul>
       </nav>

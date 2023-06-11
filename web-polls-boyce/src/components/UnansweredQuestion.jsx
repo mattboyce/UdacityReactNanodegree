@@ -4,6 +4,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { Header, Button } from 'semantic-ui-react';
 import { handleAnswerQuestion } from '../actions/questions';
+// import { handleSaveQuestionAnswer } from '../actions/users';
 
 const withRouter = (Component) => {
     const ComponentWithRouterProp = (props) => {
@@ -26,9 +27,11 @@ const UnansweredQuestion = (props) => {
         switch (e.target.id) {
             case "OptionOneBtn":
                 props.dispatch(handleAnswerQuestion(props.question.id, "optionOne"));
+                // props.dispatch(handleSaveQuestionAnswer(props.authedUser, props.question.id, "optionOne"));
                 break;
             case "OptionTwoBtn":
                 props.dispatch(handleAnswerQuestion(props.question.id, "optionTwo"));
+                // props.dispatch(handleSaveQuestionAnswer(props.authedUser, props.question.id, "optionTwo"));
                 break;
 
             default:

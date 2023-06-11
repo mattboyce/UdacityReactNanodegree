@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
@@ -8,8 +9,11 @@ import { Username } from './Username';
 
 const NavBar = (props) => {
 
+  const navigate = useNavigate();
+
   const handleLogoutClicked = () => {
     props.dispatch(setAuthedUser(null));
+    navigate(`/`);
   };
 
   return (

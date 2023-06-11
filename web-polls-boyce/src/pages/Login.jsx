@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { setAuthedUser } from '../actions/authedUser';
 
@@ -10,10 +9,7 @@ const UserSelect = (props) => {
         return <></>
     }
 
-    const navigate = useNavigate();
-
     const handleUserChange = (e) => {
-        navigate(`/`);
         props.props.dispatch(setAuthedUser(e.target.value));
     }
 

@@ -1,6 +1,6 @@
 import * as api from "../utils/api";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
-import { saveAnswerToUser } from './users';
+import { addQuestionToUser, saveAnswerToUser } from './users';
 
 export const GET_QUESTIONS = "GET_QUESTIONS";
 export const SAVE_QUESTION_ANSWER = "SAVE_QUESTION_ANSWER";
@@ -36,6 +36,7 @@ export function handleAddQuestion(question) {
             question,
         })
             .then((question) => dispatch(addQuestion(question)))
+            .then(result => { dispatch(addQuestionToUser(result.question)) })
             .then(() => dispatch(hideLoading()));
     };
 }

@@ -1,6 +1,3 @@
-// import { saveQuestionAnswer } from '../utils/api';
-// import { saveQuestionAnswer } from './questions';
-
 export const GET_USERS = 'GET_USERS';
 export const SAVE_ANSWER_TO_USER = 'SAVE_ANSWER_TO_USER';
 export const ADD_QUESTION_TO_USER = 'ADD_QUESTION_TO_USER';
@@ -31,14 +28,6 @@ export function handleSaveQuestionAnswer(authUser, qid, answer) {
     })
       .then(() => dispatch(saveAnswerToUser({ authedUser, qid, answer, })));
   };
-  // return dispatch => {
-  //   dispatch(saveAnswerToUser(authUser, qid, answer));
-  //   // dispatch(saveQuestionAnswer(authUser, qid, answer));
-
-  //   // return saveQuestionAnswer(authUser, qid, answer).catch(e => {
-  //   //   console.warn('Error in handleSaveQuestionAnswer:', e);
-  //   // });
-  // };
 }
 
 export function addQuestionToUser({ id, author }) {

@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import { handleInitialData } from './actions/shared';
 import NavBar from './components/NavBar';
+import LoginNavBar from './components/LoginNavBar';
 import CreateQuestion from './pages/CreateQuestion';
 import Leaderboard from './pages/Leaderboard';
 import ViewQuestion from './pages/ViewQuestion';
@@ -22,8 +23,11 @@ const App = (props) => {
   return (
     <div className="container">
       {authedUser === undefined || authedUser === null ? (
-        <Login
-          props />
+        <Fragment>
+          <LoginNavBar />
+          <Login
+            props />
+        </Fragment>
       ) : (
         <Fragment>
           <NavBar />
